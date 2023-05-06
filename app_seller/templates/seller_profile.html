@@ -1,0 +1,82 @@
+{% extends "seller_header_footer.html" %} 
+{% load static %}
+{% block content %}
+
+<div class="page-banner-area bg-1">
+    <div class="container">
+        <div class="page-banner-content">
+            <h1>SELLERS PROFILE</h1>
+            <ul>
+                <li><a href="index.html"> SELLERS HOME</a></li>
+                <li>SELLERS PROFILE</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="register-area ptb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-lg-10">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="register-left-content">
+                            <div class="register-image">
+                                <img src="{% static 'assets/images/user-image/user-img-2.webp' %}" alt="image" />
+                            </div>
+                            <div class="register-btns">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/" target="_blank">Continue with Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.google.com/" target="_blank">Continue with Google</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.apple.com/" target="_blank">Continue with Apple</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="register-content">
+
+                            <p style="font-size: 24px; color: red;">{{msg}}</p>
+                            <h3>Create An Account</h3>
+                            <p>Already have an account? <a href="">Login</a></p>
+                            <form action="{% url 'seller_profile' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label>Fullname</label>
+                                    <input type="text" value="{{seller_user_data.seller_fullname}}" class="form-control" name="fname" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Email *</label>
+                                    <input type="email" value="{{seller_user_data.seller_username}}" class="form-control" name="email"  disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label> Old Password *</label>
+                                    <input type="password" class="form-control" name="opass" />
+                                </div>
+                                <div class="form-group">
+                                    <label> New Password</label>
+                                    <input type="password" class="form-control" name="pass" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password *</label>
+                                    <input type="password" class="form-control" name="cpass" />
+                                </div>
+                                <button type="submit" class="default-btn style5">
+                                    Update
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
